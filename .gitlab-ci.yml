@@ -23,6 +23,7 @@ build:
   stage: build
   extends: .python-base
   script:
+    - pip install build
     - python -m build
   artifacts:
     paths:

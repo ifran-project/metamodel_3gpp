@@ -549,7 +549,10 @@ class DUConfig(CommonGNBConfig):
     """F1-C endpoint."""
 
     cu_cp: str = Field(default="cu_cp")
-    """Name reference to a defined CU or CU-CP component to connect to."""
+    """Name reference to a defined CU or CU-CP component to connect to over F1-U."""
+
+    cu_up: str = Field(default="cu_up")
+    """Name reference to a defined CU or CU-UP component to connect to over F1-C."""
 
 
 class GNBConfig(CommonGNBConfig):

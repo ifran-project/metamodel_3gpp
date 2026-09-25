@@ -542,17 +542,17 @@ class DUConfig(CommonGNBConfig):
     gnbDuId: int = Field(default=0, ge=0, le=4294967295)
     """gNB DU identity."""
 
-    f1u: F1U = Field(default_factory=F1U)
-    """F1-U endpoint."""
-
     f1c: F1C = Field(default_factory=F1C)
     """F1-C endpoint."""
 
+    f1u: F1U = Field(default_factory=F1U)
+    """F1-U endpoint."""
+
     cu_cp: str = Field(default="cu_cp")
-    """Name reference to a defined CU or CU-CP component to connect to over F1-U."""
+    """Name reference to a defined CU or CU-CP component to connect to over F1-C."""
 
     cu_up: str = Field(default="cu_up")
-    """Name reference to a defined CU or CU-UP component to connect to over F1-C."""
+    """Name reference to a defined CU or CU-UP component to connect to over F1-U."""
 
 
 class GNBConfig(CommonGNBConfig):

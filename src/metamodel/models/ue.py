@@ -105,10 +105,10 @@ class UEAuthenticationData(StrictBaseModel):
         - 3GPP TS 29.503
     """
 
-    k: str = Field(default="fec86ba6eb707ed08905757b1bb44b8f", min_length=16, max_length=16)
+    k: str = Field(default="fec86ba6eb707ed08905757b1bb44b8f", min_length=32, max_length=32)
     """Subscriber permanent key (K). 128-bit value."""
 
-    opc: str = Field(default="C42449363BBAD02B66D16BC975D77CC1", min_length=16, max_length=16)
+    opc: str = Field(default="C42449363BBAD02B66D16BC975D77CC1", min_length=32, max_length=32)
     """Operator Variant Algorithm Configuration Field (OPc). 128-bit value."""
 
     op: str | None = Field(default=None, min_length=16, max_length=16)

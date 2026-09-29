@@ -448,6 +448,15 @@ class RANComponentConfig(StrictBaseModel):
     ric: str | None = Field(default=None)
     """Name reference to a defined E2-reachable RIC component to connect to."""
 
+    @model_validator(mode="after")
+    def validate_e2(self) -> Self:
+        """Ensure that 'e2' is set when a ric is referenced."""
+
+        if self.ric and self.e2:
+            self.e2 = E2()
+
+        return self
+
 
 class CUCPConfig(RANComponentConfig):
     """Generic CU-CP configuration."""

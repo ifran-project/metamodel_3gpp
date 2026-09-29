@@ -258,10 +258,13 @@ class UE(Component5G):
 
     @model_validator(mode="after")
     def validate_ru(self) -> Self:
-        """Ensure that 'ru' is set for containerized UEs."""
+        """Ensure that 'ru' is set for containerized UEs and None for COTS UEs."""
 
         if self.type is UEType.CONTAINERIZED and self.config.ru is None:
             raise ValueError("'ru' is required for containerized UE.")
+
+        if self.type is UEType.COTS:
+            self.config.ru = None
 
         return self
 

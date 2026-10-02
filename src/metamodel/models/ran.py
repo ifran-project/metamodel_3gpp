@@ -461,7 +461,7 @@ class RANComponentConfig(StrictBaseModel):
 class CUCPConfig(RANComponentConfig):
     """Generic CU-CP configuration."""
 
-    nrCellId: int = Field(default=0, ge=0)
+    nrCellId: int = Field(default=1, ge=0)
     """NR Cell Identity."""
 
     securityAlgorithmConfiguration: SecurityAlgorithmConfiguration = Field(
@@ -484,7 +484,7 @@ class CUCPConfig(RANComponentConfig):
 class CUUPConfig(RANComponentConfig):
     """Generic CU-UP configuration."""
 
-    gnbCuUpId: int = Field(default=0, ge=0, le=4294967295)
+    gnbCuUpId: int = Field(default=1, ge=0, le=4294967295)
     """gNB CU-UP identity."""
 
     e1: E1 = Field(default_factory=E1)
@@ -503,10 +503,10 @@ class CUUPConfig(RANComponentConfig):
 class CUConfig(RANComponentConfig):
     """Generic CU configuration."""
 
-    gnbCuUpId: int = Field(default=0, ge=0, le=4294967295)
+    gnbCuUpId: int = Field(default=1, ge=0, le=4294967295)
     """gNB CU-UP identity."""
 
-    nrCellId: int = Field(default=0, ge=0)
+    nrCellId: int = Field(default=1, ge=0)
     """NR Cell Identity."""
 
     f1c: F1C = Field(default_factory=F1C)
@@ -548,7 +548,7 @@ class CommonGNBConfig(RANComponentConfig):
 class DUConfig(CommonGNBConfig):
     """Generic DU configuration."""
 
-    gnbDuId: int = Field(default=0, ge=0, le=4294967295)
+    gnbDuId: int = Field(default=1, ge=0, le=4294967295)
     """gNB DU identity."""
 
     f1c: F1C = Field(default_factory=F1C)

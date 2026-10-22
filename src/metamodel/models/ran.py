@@ -271,8 +271,8 @@ class TDDConfiguration(StrictBaseModel):
 
     The default configuration corresponds to the commonly used
     FR1 / 30 kHz / 5 ms TDD pattern:
-        7 full DL slots + 6 DL symbols
-        2 full UL slots + 4 UL symbols.
+    - 7 full DL slots + 6 DL symbols
+    - 2 full UL slots + 4 UL symbols.
     """
 
     periodicityMilliseconds: TDDPeriodicity = Field(default=TDDPeriodicity.MS_5)

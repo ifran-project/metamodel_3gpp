@@ -539,6 +539,9 @@ class SMFConfig(CoreComponentConfig):
     plmnList: list[PLMN] = Field(default_factory=lambda: [PLMN()])
     """List of PLMN identities (MCC/MNC) served by this SMF instance."""
 
+    taiList: list[TAI] = Field(default_factory=lambda: [TAI()])
+    """List of Tracking Area Identities (TAI) served by this SMF."""
+
     upfs: list[str] = Field(default_factory=lambda: ["upf"])
     """List of name references to defined UPFs to connect to."""
 

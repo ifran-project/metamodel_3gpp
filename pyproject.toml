@@ -38,6 +38,7 @@ doc = [
 
 [tool.ruff]
 line-length = 120
+extend-exclude = ["docs", "public"]
 
 [tool.ruff.lint]
 select = [

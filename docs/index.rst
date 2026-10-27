@@ -1,0 +1,7 @@
+Metamodel API Reference
+=======================
+
+.. toctree::
+   :maxdepth: 4
+
+   api/index.rst

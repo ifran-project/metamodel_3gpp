@@ -1,6 +1,6 @@
 [project]
 name = "metamodel"
-version = "0.0.4"
+version = "0.0.5"
 description = "5G Meta-model"
 authors = [
     {name = "Ziyad Mabrouk", email = "ziyad.mabrouk@inria.fr"},

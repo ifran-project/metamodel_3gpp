@@ -52,7 +52,7 @@ for info in PROJECTS:
     sys.path.insert(0, str(info["src"]))
 
 # -- Project information -----------------------------------------------------
-project = "Metamodel API Reference"
+project = "3GPP-based Metamodel"
 release = " / ".join(f'{p["name"]} {p["version"]}' for p in PROJECTS)
 version = release
 
@@ -90,9 +90,7 @@ exclude_patterns = ["_build"]
 # -- HTML output -------------------------------------------------------------
 html_theme = "furo"
 html_theme_options = {
-    "collapse_navigation": False,   # keep sub-trees expanded
-    "navigation_depth": 4,
-    "titles_only": False,
+    "sidebar_hide_name": False,
 }
 
 # -- Generate the API pages before each build --------------------------------

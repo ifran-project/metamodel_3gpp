@@ -72,6 +72,7 @@ autodoc_default_options = {
     "members": True,
     "undoc-members": True,
     "show-inheritance": True,
+    "no-index": True,
 }
 autodoc_member_order = "bysource"
 # autodoc_mock_imports = ["some_heavy_dependency"]  # if deps aren't installed
@@ -82,6 +83,7 @@ source_suffix = {
 }
 
 myst_fence_as_directive = ["mermaid"]
+suppress_warnings = ["myst.xref_missing"]
 
 exclude_patterns = ["_build"]
 
@@ -98,6 +100,10 @@ def generate_reference(app):
     python_dir = reference_dir / "python"
     python_dir.mkdir(parents=True, exist_ok=True)
 
+    for stale_file in [reference_dir / "index.md", python_dir / "index.md"]:
+        if stale_file.exists():
+            stale_file.unlink()
+
     packages_index = [
         "Python module reference",
         "=======================",
@@ -113,8 +119,8 @@ def generate_reference(app):
                 "--force",
                 "--separate",
                 "--module-first",
-                "--no-toc",
                 "--implicit-namespaces",
+                "--tocfile", "index",
                 "-o", str(python_dir / pkg.name),
                 str(pkg),
             ])

@@ -1,9 +1,7 @@
-# 3GPP-based Metamodel
+# 3GPP-based 5G/6G Metamodel
 
 ```{include} ../README.md
 ```
-
----
 
 ## Documentation
 

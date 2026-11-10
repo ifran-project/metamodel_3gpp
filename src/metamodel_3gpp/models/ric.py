@@ -1,11 +1,11 @@
-"""RAN Intelligent Controller (RIC) models."""
+"""3GPP 5G/6G RAN Intelligent Controller (RIC) models."""
 
 from enum import StrEnum, auto
 from typing import Annotated, Literal
 
 from pydantic import Field
 
-from metamodel.models.common import (
+from metamodel_3gpp.models.common import (
     E2,
     Category5G,
     Component5G,

@@ -5,7 +5,7 @@ from typing import Literal
 
 from pydantic import Field
 
-from metamodel.models.base import StrictBaseModel
+from metamodel_3gpp.models.base import StrictBaseModel
 
 
 class RUType(StrEnum):

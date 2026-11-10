@@ -1,7 +1,7 @@
 [project]
-name = "metamodel"
+name = "metamodel_3gpp"
 version = "0.0.5"
-description = "5G Meta-model"
+description = "3GPP 5G/6G metamodel"
 authors = [
     {name = "Ziyad Mabrouk", email = "ziyad.mabrouk@inria.fr"},
     {name = "Damien Saucez", email = "damien.saucez@inria.fr"},
@@ -33,7 +33,7 @@ dev = [
 ]
 doc = [
     "sphinx>=7.0.0",
-    "sphinx-rtd-theme>=2.0.0",
+    "furo",
 ]
 
 [tool.ruff]

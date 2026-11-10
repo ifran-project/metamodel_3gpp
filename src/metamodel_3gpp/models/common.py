@@ -1,4 +1,4 @@
-"""Common 5G models."""
+"""Common 3GPP 5G/6G models."""
 
 import re
 from enum import StrEnum, auto
@@ -11,7 +11,7 @@ from pydantic import (
     field_validator,
 )
 
-from metamodel.models.base import StrictBaseModel
+from metamodel_3gpp.models.base import StrictBaseModel
 
 
 class Category5G(StrEnum):

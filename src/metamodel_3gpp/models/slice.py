@@ -1,4 +1,4 @@
-"""5G slicing models."""
+"""3GPP 5G/6G slicing models."""
 
 from enum import StrEnum, auto
 from ipaddress import IPv4Address, IPv4Network, IPv6Address, IPv6Network
@@ -6,9 +6,9 @@ from typing import Any
 
 from pydantic import Field, field_serializer, field_validator, model_validator
 
-from metamodel.models.base import StrictBaseModel
-from metamodel.models.common import BitRate
-from metamodel.utils import (
+from metamodel_3gpp.models.base import StrictBaseModel
+from metamodel_3gpp.models.common import BitRate
+from metamodel_3gpp.utils import (
     parse_hex_int,
     serialize_hex_int,
 )

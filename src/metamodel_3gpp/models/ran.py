@@ -1,12 +1,12 @@
-"""Radio Access Network (RAN) models."""
+"""3GPP 5G/6G Radio Access Network (RAN) models."""
 
 from enum import Enum, IntEnum, StrEnum, auto
 from typing import Annotated, Literal, Self
 
 from pydantic import Field, model_validator
 
-from metamodel.models.base import StrictBaseModel
-from metamodel.models.common import (
+from metamodel_3gpp.models.base import StrictBaseModel
+from metamodel_3gpp.models.common import (
     E1,
     E2,
     F1C,
@@ -19,7 +19,7 @@ from metamodel.models.common import (
     Network5G,
     SecurityAlgorithmConfiguration,
 )
-from metamodel.models.core import PLMNSupportItem
+from metamodel_3gpp.models.core import PLMNSupportItem
 
 
 class RANComponentType(StrEnum):
@@ -408,9 +408,8 @@ class RadioConfiguration(StrictBaseModel):
             if self.uplinkArfcn == self.downlinkArfcn:
                 raise ValueError("'uplinkArfcn' and 'downlinkArfcn' must be different when duplex mode is FDD.")
 
-        elif self.duplexMode is DuplexMode.TDD:
-            if self.uplinkArfcn is None:
-                self.uplinkArfcn = self.downlinkArfcn
+        elif self.duplexMode is DuplexMode.TDD and self.uplinkArfcn is None:
+            self.uplinkArfcn = self.downlinkArfcn
 
 
     @model_validator(mode="after")

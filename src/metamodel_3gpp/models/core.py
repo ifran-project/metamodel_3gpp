@@ -1,4 +1,4 @@
-"""5G core models."""
+"""3GPP 5G/6G core models."""
 
 from enum import StrEnum, auto
 from typing import Annotated, Any, Literal
@@ -11,11 +11,11 @@ from pydantic import (
     field_validator,
 )
 
-from metamodel.models.base import (
+from metamodel_3gpp.models.base import (
     StrictBaseModel,
     TolerantBaseModel,
 )
-from metamodel.models.common import (
+from metamodel_3gpp.models.common import (
     NGAP,
     PFCP,
     TLS,
@@ -27,7 +27,7 @@ from metamodel.models.common import (
     SecurityAlgorithmConfiguration,
     TransportEndpoint,
 )
-from metamodel.utils import (
+from metamodel_3gpp.utils import (
     URL,
     parse_hex_int,
     serialize_hex_int,

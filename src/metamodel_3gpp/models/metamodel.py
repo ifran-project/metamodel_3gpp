@@ -1,16 +1,16 @@
-"""Full meta model."""
+"""Full 3GPP 5G/6G metamodel."""
 
 from typing import Any
 
 from pydantic import Field, field_validator
 
-from metamodel.models.base import StrictBaseModel
-from metamodel.models.core import Core
-from metamodel.models.ran import RAN
-from metamodel.models.ric import RIC
-from metamodel.models.ru import RU
-from metamodel.models.slice import Slice
-from metamodel.models.ue import UE
+from metamodel_3gpp.models.base import StrictBaseModel
+from metamodel_3gpp.models.core import Core
+from metamodel_3gpp.models.ran import RAN
+from metamodel_3gpp.models.ric import RIC
+from metamodel_3gpp.models.ru import RU
+from metamodel_3gpp.models.slice import Slice
+from metamodel_3gpp.models.ue import UE
 
 
 class MetaModel(StrictBaseModel):

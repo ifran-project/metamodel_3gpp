@@ -1,4 +1,4 @@
-"""Common 3GPP 5G/6G models."""
+"""Common 3GPP-based 5G/6G models."""
 
 import re
 from enum import StrEnum, auto

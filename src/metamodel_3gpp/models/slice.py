@@ -1,4 +1,4 @@
-"""3GPP 5G/6G slicing models."""
+"""3GPP-based 5G/6G slicing models."""
 
 from enum import StrEnum, auto
 from ipaddress import IPv4Address, IPv4Network, IPv6Address, IPv6Network

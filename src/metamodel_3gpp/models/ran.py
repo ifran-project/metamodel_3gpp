@@ -1,4 +1,4 @@
-"""3GPP 5G/6G Radio Access Network (RAN) models."""
+"""3GPP-based 5G/6G Radio Access Network (RAN) models."""
 
 from enum import Enum, IntEnum, StrEnum, auto
 from typing import Annotated, Literal, Self

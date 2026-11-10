@@ -1,4 +1,4 @@
-"""3GPP 5G/6G core models."""
+"""3GPP-based 5G/6G core models."""
 
 from enum import StrEnum, auto
 from typing import Annotated, Any, Literal

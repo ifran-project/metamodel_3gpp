@@ -1,4 +1,4 @@
-"""Full 3GPP 5G/6G metamodel."""
+"""Full 3GPP-based 5G/6G metamodel."""
 
 from typing import Any
 

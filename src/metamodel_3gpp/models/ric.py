@@ -1,4 +1,4 @@
-"""3GPP 5G/6G RAN Intelligent Controller (RIC) models."""
+"""3GPP-based 5G/6G RAN Intelligent Controller (RIC) models."""
 
 from enum import StrEnum, auto
 from typing import Annotated, Literal

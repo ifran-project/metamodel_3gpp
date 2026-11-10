@@ -1,4 +1,4 @@
-"""3GPP 5G/6G User Equipment (UE) models."""
+"""3GPP-based 5G/6G User Equipment (UE) models."""
 
 from enum import StrEnum, auto
 from ipaddress import IPv4Address, IPv6Address

@@ -3,9 +3,10 @@
 
 ## Model Reference
 
+Automatically generated documentation of Python models and supporting modules.
+
 ```{toctree}
 :maxdepth: 2
-:caption: Model Reference
 
 reference/index
 ```

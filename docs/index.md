@@ -1,9 +1,7 @@
-# 3GPP-based 5G/6G Metamodel
-
 ```{include} ../README.md
 ```
 
-## Documentation
+## Model Reference
 
 ```{toctree}
 :maxdepth: 2

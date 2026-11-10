@@ -88,28 +88,34 @@ suppress_warnings = ["myst.xref_missing"]
 exclude_patterns = ["_build"]
 
 # HTML output
-html_theme = "furo"
 html_title = "3GPP-based Metamodel"
+html_short_title = "3GPP Metamodel"
+html_theme = "furo"
 html_theme_options = {}
 
 
 def generate_reference(app):
     from sphinx.ext.apidoc import main as apidoc
+    import shutil
 
     reference_dir = DOCS / "reference"
+    reference_dir.mkdir(parents=True, exist_ok=True)
+
+    # Remove the old intermediate Python reference directory
     python_dir = reference_dir / "python"
-    python_dir.mkdir(parents=True, exist_ok=True)
+    if python_dir.exists():
+        shutil.rmtree(python_dir)
 
-    for stale_file in [reference_dir / "index.md", python_dir / "index.md"]:
-        if stale_file.exists():
-            stale_file.unlink()
-
+    # Build the Model Reference index directly
     packages_index = [
-        "Python module reference",
-        "=======================",
+        "Model Reference",
+        "===============",
+        "",
+        "Automatically generated documentation of Python models "
+        "and supporting modules.",
         "",
         ".. toctree::",
-        "   :maxdepth: 2",
+        "   :maxdepth: 3",
         "",
     ]
 
@@ -121,33 +127,14 @@ def generate_reference(app):
                 "--module-first",
                 "--implicit-namespaces",
                 "--tocfile", "index",
-                "-o", str(python_dir / pkg.name),
+                "-o", str(reference_dir / pkg.name),
                 str(pkg),
             ])
 
-            packages_index.append(
-                f"   {pkg.name}/index"
-            )
-
-    (python_dir / "index.rst").write_text(
-        "\n".join(packages_index) + "\n",
-        encoding="utf-8",
-    )
+            packages_index.append(f"   {pkg.name}/index")
 
     (reference_dir / "index.rst").write_text(
-        "\n".join([
-            "Model Reference",
-            "===============",
-            "",
-            "Automatically generated documentation of the "
-            "Python models and supporting modules.",
-            "",
-            ".. toctree::",
-            "   :maxdepth: 2",
-            "",
-            "   python/index",
-            "",
-        ]),
+        "\n".join(packages_index) + "\n",
         encoding="utf-8",
     )
 

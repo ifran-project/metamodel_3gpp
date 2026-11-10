@@ -1,6 +1,6 @@
 [project]
 name = "metamodel_3gpp"
-version = "0.0.5"
+version = "0.0.6"
 description = "3GPP-based model for describing 5G/6G mobile networks."
 authors = [
     {name = "Ziyad Mabrouk", email = "ziyad.mabrouk@inria.fr"},

@@ -1,7 +1,15 @@
-Metamodel API Reference
-=======================
+# 3GPP-based Metamodel
 
-.. toctree::
-   :maxdepth: 4
+```{include} ../README.md
+```
 
-   api/index.rst
+---
+
+## Documentation
+
+```{toctree}
+:maxdepth: 2
+:caption: Model Reference
+
+reference/index
+```

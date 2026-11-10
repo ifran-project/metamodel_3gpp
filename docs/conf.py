@@ -2,11 +2,8 @@ import sys
 from pathlib import Path
 import re
 from datetime import date
+import tomllib
 
-try:
-    import tomllib            # Python 3.11+
-except ModuleNotFoundError:
-    import tomli as tomllib   # pip install tomli
 
 DOCS = Path(__file__).resolve().parent
 ROOT = DOCS.parent
@@ -62,7 +59,8 @@ author = ", ".join(ALL_AUTHORS)
 copyright = f"{date.today().year}, {author}" if author else str(date.today().year)
 
 
-# -- General configuration ---------------------------------------------------
+# General configuration
+root_doc = "index"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",   # Google / NumPy style docstrings
@@ -87,64 +85,67 @@ myst_fence_as_directive = ["mermaid"]
 
 exclude_patterns = ["_build"]
 
-# -- HTML output -------------------------------------------------------------
+# HTML output
 html_theme = "furo"
-html_theme_options = {
-    "sidebar_hide_name": False,
-}
+html_title = "3GPP-based Metamodel"
+html_theme_options = {}
 
-# -- Generate the API pages before each build --------------------------------
-def _generate_api(app):
+
+def generate_reference(app):
     from sphinx.ext.apidoc import main as apidoc
 
-    api_dir = DOCS / "api"
-    api_dir.mkdir(parents=True, exist_ok=True)
-    toc = []
+    reference_dir = DOCS / "reference"
+    python_dir = reference_dir / "python"
+    python_dir.mkdir(parents=True, exist_ok=True)
+
+    packages_index = [
+        "Python module reference",
+        "=======================",
+        "",
+        ".. toctree::",
+        "   :maxdepth: 2",
+        "",
+    ]
 
     for info in PROJECTS:
-        title = f'{info["name"]} {info["version"]}'
-        toc += [title, "-" * len(title), "",
-                ".. toctree::",
-                "   :maxdepth: 3",
-                "   :titlesonly:",
-                ""]
         for pkg in info["packages"]:
             apidoc([
-                "--force", "--separate", "--module-first", "--no-toc",
+                "--force",
+                "--separate",
+                "--module-first",
+                "--no-toc",
                 "--implicit-namespaces",
-                "-o", str(api_dir / pkg.name), str(pkg),
-            ])
-            toc.append(f"   api/{pkg.name}/{pkg.name}")
-        toc.append("")
-
-    # .inc is not a Sphinx source suffix, so it is not built as a page itself
-    (api_dir / "toc.inc").write_text("\n".join(toc), encoding="utf-8")
-def generate_api(app):
-    from sphinx.ext.apidoc import main as apidoc
-
-    api_dir = DOCS / "api"
-    index_lines = ["API", "===", ""]
-
-    for info in PROJECTS:
-        for pkg in info["packages"]:
-            # one .rst per package/submodule, with automodule for each
-            apidoc([
-                "--force", "--separate", "--module-first", "--no-toc",
-                "-o", str(api_dir / pkg.name),
+                "-o", str(python_dir / pkg.name),
                 str(pkg),
             ])
-            title = f'{info["name"]} {info["version"]}'
-            index_lines += [
-                title, "-" * len(title), "",
-                ".. toctree::",
-                "   :maxdepth: 2",
-                "",
-                f"   {pkg.name}/{pkg.name}",
-                "",
-            ]
 
-    (api_dir / "index.rst").write_text("\n".join(index_lines), encoding="utf-8")
+            packages_index.append(
+                f"   {pkg.name}/index"
+            )
+
+    (python_dir / "index.rst").write_text(
+        "\n".join(packages_index) + "\n",
+        encoding="utf-8",
+    )
+
+    (reference_dir / "index.rst").write_text(
+        "\n".join([
+            "Model Reference",
+            "===============",
+            "",
+            "Automatically generated documentation of the "
+            "Python models and supporting modules.",
+            "",
+            ".. toctree::",
+            "   :maxdepth: 2",
+            "",
+            "   python/index",
+            "",
+        ]),
+        encoding="utf-8",
+    )
 
 
 def setup(app):
-    app.connect("builder-inited", generate_api)
+    app.connect("builder-inited", generate_reference)
+

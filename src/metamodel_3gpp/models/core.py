@@ -104,7 +104,7 @@ class SBI(TransportEndpoint):
     scheme: Literal["http", "https"] = Field(default="http")
     """URI scheme used for the SBI endpoint."""
 
-    port: int = Field(default=80, ge=1,le=65535)
+    port: int = Field(default=80, ge=1, le=65535)
     """TCP port of the SBI endpoint."""
 
     apiVersion: str = Field(default="v1", pattern=r"^v\d+$")
@@ -145,7 +145,6 @@ class PLMN(TolerantBaseModel):
 
         return f"{self.mcc:03d}{self.mnc:02d}" if self.mnc < 100 else f"{self.mcc:03d}{self.mnc:03d}"  # noqa: PLR2004
 
-
     @field_validator("mcc", "mnc", mode="before")
     @classmethod
     def parse_code(cls, value) -> int | Any:
@@ -157,13 +156,11 @@ class PLMN(TolerantBaseModel):
             return int(value)
         return value
 
-
     @field_serializer("mcc")
     def serialize_mcc(self, value: int) -> str:
         """Serialize MCC as a three-digit string."""
 
         return f"{value:03d}"
-
 
     @field_serializer("mnc")
     def serialize_mnc(self, value: int) -> str:
@@ -309,7 +306,9 @@ class NSIInformation(StrictBaseModel):
     nsiId: int = Field(default=1)
     """Network Slice Instance identifier."""
 
-    nrfNfMgtUri: URL | None = Field(default=TypeAdapter(URL).validate_python("http://cn5g-nrf:8080/nnrf-nfm/v1/nf-instances"))
+    nrfNfMgtUri: URL | None = Field(
+        default=TypeAdapter(URL).validate_python("http://cn5g-nrf:8080/nnrf-nfm/v1/nf-instances")
+    )
     """NRF NF management URI."""
 
 
@@ -401,7 +400,8 @@ class AMFInfo(StrictBaseModel):
     """NF Instance ID of the AMF."""
 
     supportedNssaiAvailabilityData: SupportedNSSAIAvailabilityData = Field(
-        default_factory=SupportedNSSAIAvailabilityData)
+        default_factory=SupportedNSSAIAvailabilityData
+    )
     """S-NSSAI availability information advertised by the AMF."""
 
 
@@ -425,14 +425,12 @@ class AMFInfoSet(StrictBaseModel):
     amfList: list[AMFInfo] = Field(default_factory=lambda: [AMFInfo()])
     """List of AMFs belonging to the AMF Set."""
 
-
     @field_validator("targetAmfSet", mode="before")
     @classmethod
     def normalize_hex_values(cls, value) -> int | Any:
         """Convert hexadecimal strings to integers."""
 
         return parse_hex_int(value)
-
 
     @field_serializer("targetAmfSet")
     def serialize_target_amf_set_id(self, value: int) -> str | None:
@@ -498,7 +496,8 @@ class AMFConfig(CoreComponentConfig):
     """List of supported PLMN identities and associated S-NSSAIs."""
 
     securityAlgorithmConfiguration: SecurityAlgorithmConfiguration = Field(
-        default_factory=SecurityAlgorithmConfiguration)
+        default_factory=SecurityAlgorithmConfiguration
+    )
     """Security algorithm preference configuration."""
 
     networkName: NetworkName = Field(default_factory=NetworkName)
@@ -666,29 +665,26 @@ class NSSFComponent(CoreComponent):
 
 # type used to tell pydantic which ran component to chose for validation based on the type
 type ValidatedCoreComponent = Annotated[
-    AMFComponent |
-    AUSFComponent |
-    SMFComponent |
-    UPFComponent |
-    NRFComponent |
-    NSSFComponent,
-    Field(discriminator="type")
+    AMFComponent | AUSFComponent | SMFComponent | UPFComponent | NRFComponent | NSSFComponent,
+    Field(discriminator="type"),
 ]
 
 
 class Core(Network5G):
     """5G core."""
 
-    components: dict[str, ValidatedCoreComponent | CoreComponent] = Field(default_factory=lambda: {
-        "amf": AMFComponent(type=CoreComponentType.AMF),
-        "ausf": AUSFComponent(type=CoreComponentType.AUSF),
-        "bsf": CoreComponent(type=CoreComponentType.BSF),
-        "nssf": NSSFComponent(type=CoreComponentType.NSSF),
-        "nrf": NRFComponent(type=CoreComponentType.NRF),
-        "pcf": CoreComponent(type=CoreComponentType.PCF),
-        "smf": SMFComponent(type=CoreComponentType.SMF),
-        "upf": UPFComponent(type=CoreComponentType.UPF),
-        "udm": CoreComponent(type=CoreComponentType.UDM),
-        "udr": CoreComponent(type=CoreComponentType.UDR),
-    })
+    components: dict[str, ValidatedCoreComponent | CoreComponent] = Field(
+        default_factory=lambda: {
+            "amf": AMFComponent(type=CoreComponentType.AMF),
+            "ausf": AUSFComponent(type=CoreComponentType.AUSF),
+            "bsf": CoreComponent(type=CoreComponentType.BSF),
+            "nssf": NSSFComponent(type=CoreComponentType.NSSF),
+            "nrf": NRFComponent(type=CoreComponentType.NRF),
+            "pcf": CoreComponent(type=CoreComponentType.PCF),
+            "smf": SMFComponent(type=CoreComponentType.SMF),
+            "upf": UPFComponent(type=CoreComponentType.UPF),
+            "udm": CoreComponent(type=CoreComponentType.UDM),
+            "udr": CoreComponent(type=CoreComponentType.UDR),
+        }
+    )
     """Core components."""

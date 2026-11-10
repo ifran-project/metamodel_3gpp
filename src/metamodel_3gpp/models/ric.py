@@ -92,7 +92,9 @@ type ValidatedRICComponent = Annotated[SingleRICComponent | E2TermComponent, Fie
 class RIC(Network5G):
     """5G RAN Intelligent Controller network."""
 
-    components: dict[str, ValidatedRICComponent | RICComponent] = Field(default_factory=lambda: {
-        "ric": SingleRICComponent(type=RICComponentType.RIC),
-        })
+    components: dict[str, ValidatedRICComponent | RICComponent] = Field(
+        default_factory=lambda: {
+            "ric": SingleRICComponent(type=RICComponentType.RIC),
+        }
+    )
     """RIC components."""

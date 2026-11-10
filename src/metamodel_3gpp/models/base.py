@@ -44,7 +44,8 @@ class StrictBaseModel(BaseModel):
             self.model_dump(
                 mode="json",
                 exclude_defaults=exclude_defaults,
-            ), sort_keys=False,
+            ),
+            sort_keys=False,
         )
 
     def to_yaml_file(self, path: str, exclude_defaults: bool = True) -> None:

@@ -88,7 +88,8 @@ class SecurityAlgorithmConfiguration(StrictBaseModel):
             IntegrityAlgorithm.NIA2,
             IntegrityAlgorithm.NIA1,
             IntegrityAlgorithm.NIA0,
-        ])
+        ]
+    )
     """Preferred integrity protection algorithms."""
 
     cipheringOrder: list[CipheringAlgorithm] = Field(
@@ -96,7 +97,8 @@ class SecurityAlgorithmConfiguration(StrictBaseModel):
             CipheringAlgorithm.NEA0,
             CipheringAlgorithm.NEA1,
             CipheringAlgorithm.NEA2,
-        ])
+        ]
+    )
     """Preferred ciphering algorithms."""
 
 
@@ -116,7 +118,6 @@ class BitRate(StrictBaseModel):
 
     downlink: int = Field(ge=0, default=200_000_000)
     """Downlink bitrate in bits per second."""
-
 
     @field_validator("uplink", "downlink", mode="before")
     @classmethod
@@ -147,7 +148,6 @@ class BitRate(StrictBaseModel):
         }[unit]
 
         return int(number * multiplier)
-
 
     def serialize_bitrate(self, value: int) -> str:
         """Serialize integer bits per second to a human-readable bitrate."""
@@ -182,7 +182,7 @@ class TLS(StrictBaseModel):
     certificate: str | None = Field(default=None)
     """Path to the local X.509 certificate."""
 
-    privateKey: str | None = Field( default=None)
+    privateKey: str | None = Field(default=None)
     """Path to the local private key associated with the X.509 certificate."""
 
 
@@ -207,7 +207,7 @@ class TransportEndpoint(StrictBaseModel):
     ipv6EndPointAddress: IPvAnyAddress | None = Field(default=None)
     """IPv6 endpoint address."""
 
-    port: int = Field(ge=1,le=65535)
+    port: int = Field(ge=1, le=65535)
     """Transport layer port number."""
 
     protocol: str | None = Field(default=None)

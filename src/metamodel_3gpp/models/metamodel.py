@@ -34,7 +34,6 @@ class MetaModel(StrictBaseModel):
     ric: RIC = Field(default_factory=RIC)
     """RIC."""
 
-
     @field_validator("slices", mode="before")
     @classmethod
     def populate_slice_names(cls, value) -> dict[str, Any] | Any:

@@ -123,7 +123,6 @@ class UEAuthenticationData(StrictBaseModel):
     authenticationMethod: AuthenticationMethod = Field(default=AuthenticationMethod.FIVE_G_AKA)
     """Authentication method used for 5GS access."""
 
-
     @field_validator("amf", "sqn", mode="before")
     @classmethod
     def normalize_hex_int(cls, value) -> int | Any:
@@ -131,13 +130,11 @@ class UEAuthenticationData(StrictBaseModel):
 
         return parse_hex_int(value)
 
-
     @field_serializer("amf")
     def serialize_amf(self, value: int | None) -> str | None:
         """Serialize AMF as a four-digit hexadecimal string."""
 
         return serialize_hex_int(value, 4)
-
 
     @field_serializer("sqn")
     def serialize_sqn(self, value: int) -> str | None:
@@ -215,10 +212,10 @@ class UEConfiguration(StrictBaseModel):
     pduSessions: list[UEPDUSession] = Field(default_factory=lambda: [UEPDUSession()])
     """List of UE PDU Sessions."""
 
-    ueAmbr: BitRate = Field(default_factory= lambda: BitRate(uplink="1Gbps", downlink="1Gbps")) # type: ignore
+    ueAmbr: BitRate = Field(default_factory=lambda: BitRate(uplink="1Gbps", downlink="1Gbps"))  # type: ignore
     """UE AMBR."""
 
-    gnbs: list[str] = Field(default_factory= lambda: ["gnb"])
+    gnbs: list[str] = Field(default_factory=lambda: ["gnb"])
     """List of name reference to defined GNB/DU components to connect the UE to."""
 
     ru: str | None = Field(default="sim_ru")
@@ -226,7 +223,6 @@ class UEConfiguration(StrictBaseModel):
 
     nrBands: list[Annotated[int, Field(ge=1, le=303)]] = Field(default_factory=lambda: [78])
     """NR operating bands used by the UE."""
-
 
     @model_validator(mode="after")
     def validate_pdu_session_subscription_indexes(self) -> Self:
@@ -255,7 +251,6 @@ class UE(Component5G):
     config: UEConfiguration = Field(default_factory=UEConfiguration)
     """UE configuration."""
 
-
     @model_validator(mode="after")
     def validate_ru(self) -> Self:
         """Ensure that 'ru' is set for containerized UEs and None for COTS UEs."""
@@ -268,12 +263,11 @@ class UE(Component5G):
 
         return self
 
-
     @model_validator(mode="after")
     def validate_pdu_sessions(self) -> Self:
         """Ensure that containerized UEs have at least one PDU session."""
 
         if self.type is UEType.CONTAINERIZED and not self.config.pduSessions:
-                raise ValueError("Containerized UE needs at least one PDU session.")
+            raise ValueError("Containerized UE needs at least one PDU session.")
 
         return self

@@ -194,7 +194,6 @@ class SNSSAI(StrictBaseModel):
     sd: int | None = Field(default=None, ge=1, le=0xFFFFFF)
     """Slice Differentiator (SD) in hex format (0x000001 to 0xFFFFFF)."""
 
-
     @field_validator("sd", mode="before")
     @classmethod
     def normalize_sd(cls, value) -> int | Any:
@@ -222,7 +221,6 @@ class Slice(SNSSAI):
 
     dnns: dict[str, DNN] = Field(default_factory=lambda: {"internet": DNN()})
     """DNNs associated with this Slice."""
-
 
     @field_validator("dnns", mode="before")
     @classmethod

@@ -150,44 +150,78 @@ FR2_SCS = {
 # Common FR1 operating bands. An explicit radio.duplex_mode remains available
 # for bands not yet included in this prototype catalogue.
 TDD_BANDS: frozenset[int] = frozenset({38, 40, 41, 46, 47, 48, 50, 51, 53, 77, 78, 79, 90, 96, 101, 102, 104})
-FDD_BANDS: frozenset[int] = frozenset({1, 2, 3, 5, 7, 8, 12, 13, 14, 18, 20, 24, 25, 26, 28, 30, 31, 65, 66, 70,
-                                       71, 74, 85, 91, 92, 93, 94, 95, 97, 98, 99, 100})
+FDD_BANDS: frozenset[int] = frozenset(
+    {
+        1,
+        2,
+        3,
+        5,
+        7,
+        8,
+        12,
+        13,
+        14,
+        18,
+        20,
+        24,
+        25,
+        26,
+        28,
+        30,
+        31,
+        65,
+        66,
+        70,
+        71,
+        74,
+        85,
+        91,
+        92,
+        93,
+        94,
+        95,
+        97,
+        98,
+        99,
+        100,
+    }
+)
 
 
 # 3GPP TS 38.104 Table 5.2-1: Complete FDD ARFCN Offsets (N_UL - N_DL)
 # Formula: (f_UL_low - f_DL_low in MHz) * 200 ARFCNs/MHz
 FDD_BAND_ARFCN_OFFSETS: dict[int, int] = {
-    1: -38000,   # DL 2110-2170 MHz, UL 1920-1980 MHz (-190 MHz)
-    2: -16000,   # DL 1930-1990 MHz, UL 1850-1910 MHz (-80 MHz)
-    3: -19000,   # DL 1805-1880 MHz, UL 1710-1785 MHz (-95 MHz)
-    5: -9000,    # DL 869-894 MHz,   UL 824-849 MHz   (-45 MHz)
-    7: -24000,   # DL 2620-2690 MHz, UL 2500-2570 MHz (-120 MHz)
-    8: -9000,    # DL 925-960 MHz,   UL 880-915 MHz   (-45 MHz)
-    12: -6000,   # DL 729-746 MHz,   UL 699-716 MHz   (-30 MHz)
-    13: 6200,    # DL 746-756 MHz,   UL 777-787 MHz   (+31 MHz)
-    14: 6000,    # DL 758-768 MHz,   UL 788-798 MHz   (+30 MHz)
-    18: -9000,   # DL 860-875 MHz,   UL 815-830 MHz   (-45 MHz)
-    20: 8200,    # DL 791-821 MHz,   UL 832-862 MHz   (+41 MHz)
-    24: 20300,   # DL 1525-1559 MHz, UL 1626.5-1660.5 MHz (+101.5 MHz)
+    1: -38000,  # DL 2110-2170 MHz, UL 1920-1980 MHz (-190 MHz)
+    2: -16000,  # DL 1930-1990 MHz, UL 1850-1910 MHz (-80 MHz)
+    3: -19000,  # DL 1805-1880 MHz, UL 1710-1785 MHz (-95 MHz)
+    5: -9000,  # DL 869-894 MHz,   UL 824-849 MHz   (-45 MHz)
+    7: -24000,  # DL 2620-2690 MHz, UL 2500-2570 MHz (-120 MHz)
+    8: -9000,  # DL 925-960 MHz,   UL 880-915 MHz   (-45 MHz)
+    12: -6000,  # DL 729-746 MHz,   UL 699-716 MHz   (-30 MHz)
+    13: 6200,  # DL 746-756 MHz,   UL 777-787 MHz   (+31 MHz)
+    14: 6000,  # DL 758-768 MHz,   UL 788-798 MHz   (+30 MHz)
+    18: -9000,  # DL 860-875 MHz,   UL 815-830 MHz   (-45 MHz)
+    20: 8200,  # DL 791-821 MHz,   UL 832-862 MHz   (+41 MHz)
+    24: 20300,  # DL 1525-1559 MHz, UL 1626.5-1660.5 MHz (+101.5 MHz)
     25: -16000,  # DL 1930-1995 MHz, UL 1850-1915 MHz (-80 MHz)
-    26: -9000,   # DL 859-894 MHz,   UL 814-849 MHz   (-45 MHz)
+    26: -9000,  # DL 859-894 MHz,   UL 814-849 MHz   (-45 MHz)
     28: -11000,  # DL 758-803 MHz,   UL 703-748 MHz   (-55 MHz)
-    30: -9000,   # DL 2350-2360 MHz, UL 2305-2315 MHz (-45 MHz)
-    31: -2000,   # DL 462.5-467.5 MHz, UL 452.5-457.5 MHz (-10 MHz)
+    30: -9000,  # DL 2350-2360 MHz, UL 2305-2315 MHz (-45 MHz)
+    31: -2000,  # DL 462.5-467.5 MHz, UL 452.5-457.5 MHz (-10 MHz)
     65: -38000,  # DL 2110-2200 MHz, UL 1920-2010 MHz (-190 MHz)
     66: -20000,  # DL 2110-2200 MHz, UL 1710-1780 MHz (-100 MHz)
     70: -60000,  # DL 1995-2020 MHz, UL 1695-1710 MHz (-300 MHz)
-    71: 9200,    # DL 617-652 MHz,   UL 663-698 MHz   (+46 MHz)
-    74: -9600,   # DL 1475-1518 MHz, UL 1427-1470 MHz (-48 MHz)
-    85: -6000,   # DL 728-746 MHz,   UL 698-716 MHz   (-30 MHz)
-    91: -9000,   # DL 1427-1432 MHz, UL 880-915 MHz / variable per sub-band
-    92: -9000,   # DL 1432-1517 MHz, UL 880-915 MHz
-    93: -9000,   # DL 1427-1432 MHz, UL 1710-1785 MHz
-    94: -9000,   # DL 1432-1517 MHz, UL 1710-1785 MHz
-    95: -9000,   # DL 2010-2025 MHz, UL 1710-1785 MHz
-    97: -9000,   # SUL / Variable Paired Offsets
-    98: -9000,   # SUL / Variable Paired Offsets
-    99: -9000,   # SUL / Variable Paired Offsets
+    71: 9200,  # DL 617-652 MHz,   UL 663-698 MHz   (+46 MHz)
+    74: -9600,  # DL 1475-1518 MHz, UL 1427-1470 MHz (-48 MHz)
+    85: -6000,  # DL 728-746 MHz,   UL 698-716 MHz   (-30 MHz)
+    91: -9000,  # DL 1427-1432 MHz, UL 880-915 MHz / variable per sub-band
+    92: -9000,  # DL 1432-1517 MHz, UL 880-915 MHz
+    93: -9000,  # DL 1427-1432 MHz, UL 1710-1785 MHz
+    94: -9000,  # DL 1432-1517 MHz, UL 1710-1785 MHz
+    95: -9000,  # DL 2010-2025 MHz, UL 1710-1785 MHz
+    97: -9000,  # SUL / Variable Paired Offsets
+    98: -9000,  # SUL / Variable Paired Offsets
+    99: -9000,  # SUL / Variable Paired Offsets
     100: -9000,  # DL 925-960 MHz, UL 880-915 MHz
 }
 
@@ -195,55 +229,55 @@ FDD_BAND_ARFCN_OFFSETS: dict[int, int] = {
 # 3GPP TS 38.104, Table 5.2-1
 # Default DL NR-ARFCN = NR-ARFCN corresponding to the lower edge of the NR operating band's downlink frequency range.
 DEFAULT_DOWNLINK_ARFCN: dict[int, int] = {
-    1: 422000,    # 2110 MHz
-    2: 386000,    # 1930 MHz
-    3: 361000,    # 1805 MHz
-    5: 173800,    # 869 MHz
-    7: 524000,    # 2620 MHz
-    8: 185000,    # 925 MHz
-    12: 145800,   # 729 MHz
-    13: 149200,   # 746 MHz
-    14: 151600,   # 758 MHz
-    18: 172000,   # 860 MHz
-    20: 158200,   # 791 MHz
-    24: 305000,   # 1525 MHz
-    25: 386000,   # 1930 MHz
-    26: 171800,   # 859 MHz
-    28: 151600,   # 758 MHz
-    30: 470000,   # 2350 MHz
-    31: 92500,    # 462.5 MHz
-    38: 514000,   # 2570 MHz
-    40: 460000,   # 2300 MHz
-    41: 499200,   # 2496 MHz
-    46: 743334,   # 5150 MHz
-    47: 743334,   # 5150 MHz
-    48: 636667,   # 3550 MHz
-    50: 286400,   # 1432 MHz
-    51: 285400,   # 1427 MHz
-    53: 99100,    # 248.5 MHz
-    65: 422000,   # 2110 MHz
-    66: 422000,   # 2110 MHz
-    70: 399000,   # 1995 MHz
-    71: 123400,   # 617 MHz
-    74: 295400,   # 1475 MHz
-    77: 620000,   # 3300 MHz
-    78: 620000,   # 3300 MHz
-    79: 693334,   # 4400 MHz
-    85: 145600,   # 728 MHz
-    90: 499200,   # 2496 MHz
-    91: 285400,   # 1427 MHz
-    92: 286400,   # 1432 MHz
-    93: 285400,   # 1427 MHz
-    94: 286400,   # 1432 MHz
-    95: 402000,   # 2010 MHz
+    1: 422000,  # 2110 MHz
+    2: 386000,  # 1930 MHz
+    3: 361000,  # 1805 MHz
+    5: 173800,  # 869 MHz
+    7: 524000,  # 2620 MHz
+    8: 185000,  # 925 MHz
+    12: 145800,  # 729 MHz
+    13: 149200,  # 746 MHz
+    14: 151600,  # 758 MHz
+    18: 172000,  # 860 MHz
+    20: 158200,  # 791 MHz
+    24: 305000,  # 1525 MHz
+    25: 386000,  # 1930 MHz
+    26: 171800,  # 859 MHz
+    28: 151600,  # 758 MHz
+    30: 470000,  # 2350 MHz
+    31: 92500,  # 462.5 MHz
+    38: 514000,  # 2570 MHz
+    40: 460000,  # 2300 MHz
+    41: 499200,  # 2496 MHz
+    46: 743334,  # 5150 MHz
+    47: 743334,  # 5150 MHz
+    48: 636667,  # 3550 MHz
+    50: 286400,  # 1432 MHz
+    51: 285400,  # 1427 MHz
+    53: 99100,  # 248.5 MHz
+    65: 422000,  # 2110 MHz
+    66: 422000,  # 2110 MHz
+    70: 399000,  # 1995 MHz
+    71: 123400,  # 617 MHz
+    74: 295400,  # 1475 MHz
+    77: 620000,  # 3300 MHz
+    78: 620000,  # 3300 MHz
+    79: 693334,  # 4400 MHz
+    85: 145600,  # 728 MHz
+    90: 499200,  # 2496 MHz
+    91: 285400,  # 1427 MHz
+    92: 286400,  # 1432 MHz
+    93: 285400,  # 1427 MHz
+    94: 286400,  # 1432 MHz
+    95: 402000,  # 2010 MHz
     96: 1020000,  # 5925 MHz
-    97: 192000,   # band-specific/SUL
-    98: 192000,   # band-specific/SUL
-    99: 192000,   # band-specific/SUL
+    97: 192000,  # band-specific/SUL
+    98: 192000,  # band-specific/SUL
+    99: 192000,  # band-specific/SUL
     100: 185000,  # 925 MHz
-    101: 743334,   # 5150 MHz
-    102: 795000,   # 6650 MHz
-    104: 995000,   # 1995 MHz
+    101: 743334,  # 5150 MHz
+    102: 795000,  # 6650 MHz
+    104: 995000,  # 1995 MHz
 }
 
 
@@ -278,16 +312,16 @@ class TDDConfiguration(StrictBaseModel):
     periodicityMilliseconds: TDDPeriodicity = Field(default=TDDPeriodicity.MS_5)
     """TDD periodicity in milliseconds."""
 
-    nrofDownlinkSlots: int = Field(default=7,ge=0,le=320)
+    nrofDownlinkSlots: int = Field(default=7, ge=0, le=320)
     """Number of complete downlink slots."""
 
-    nrofDownlinkSymbols: int = Field(default=6,ge=0,le=14)
+    nrofDownlinkSymbols: int = Field(default=6, ge=0, le=14)
     """Number of additional downlink symbols."""
 
-    nrofUplinkSlots: int = Field(default=2,ge=0,le=320)
+    nrofUplinkSlots: int = Field(default=2, ge=0, le=320)
     """Number of complete uplink slots."""
 
-    nrofUplinkSymbols: int = Field(default=4,ge=0,le=14)
+    nrofUplinkSymbols: int = Field(default=4, ge=0, le=14)
     """Number of additional uplink symbols."""
 
 
@@ -349,7 +383,6 @@ class RadioConfiguration(StrictBaseModel):
     tddConfiguration: TDDConfiguration | None = Field(default=None)
     """TDD configuration if duplex mode is TDD."""
 
-
     def _derive_duplex_mode(self) -> None:
         """Derive duplex mode if not defined from the configured NR band."""
 
@@ -362,7 +395,6 @@ class RadioConfiguration(StrictBaseModel):
             else:
                 raise ValueError(f"Cannot chose duplex mode for given NR band 'n{self.nrBand}'.")
 
-
     def _validate_tdd(self) -> None:
         """Ensure 'tddConfiguration' is set when duplex mode is TDD and is None for FDD."""
 
@@ -372,7 +404,6 @@ class RadioConfiguration(StrictBaseModel):
         elif self.duplexMode is DuplexMode.FDD and self.tddConfiguration:
             raise ValueError("'tddConfiguration' must be 'None' when duplex mode is FDD.")
 
-
     def _validate_scs_for_frequency_range(self) -> None:
         """Validate if SCS is valid for the selected FR."""
 
@@ -381,8 +412,7 @@ class RadioConfiguration(StrictBaseModel):
         if self.subcarrierSpacingKhz not in valid_scs:
             raise ValueError(
                 f"{self.subcarrierSpacingKhz.value}kHz SCS is not valid for {self.frType.value.upper()!r}."
-                )
-
+            )
 
     def _validate_arfcn(self) -> None:
         """Ensure the donwlink and uplink ARFCNs are set according to the given NR Band."""
@@ -411,7 +441,6 @@ class RadioConfiguration(StrictBaseModel):
         elif self.duplexMode is DuplexMode.TDD and self.uplinkArfcn is None:
             self.uplinkArfcn = self.downlinkArfcn
 
-
     @model_validator(mode="after")
     def validate_configuration(self) -> Self:
         """Validate provided radio configuration."""
@@ -429,7 +458,7 @@ class RANComponentConfig(StrictBaseModel):
     timeZone: str = Field(default="Europe/Paris")
     """Timezone."""
 
-    gnbId: int = Field(default=1, ge=1, le=4294967295) # 2^32 - 1
+    gnbId: int = Field(default=1, ge=1, le=4294967295)  # 2^32 - 1
     """gNB identity."""
 
     tac: int = Field(default=1, ge=0, le=65535)
@@ -464,7 +493,8 @@ class CUCPConfig(RANComponentConfig):
     """NR Cell Identity."""
 
     securityAlgorithmConfiguration: SecurityAlgorithmConfiguration = Field(
-        default_factory=SecurityAlgorithmConfiguration)
+        default_factory=SecurityAlgorithmConfiguration
+    )
     """Security algorithm preference configuration."""
 
     e1: E1 = Field(default_factory=E1)
@@ -521,7 +551,8 @@ class CUConfig(RANComponentConfig):
     """N3 reference point endpoint. GTP-U user-plane tunnel endpoint towards NG-RAN."""
 
     securityAlgorithmConfiguration: SecurityAlgorithmConfiguration = Field(
-        default_factory=SecurityAlgorithmConfiguration)
+        default_factory=SecurityAlgorithmConfiguration
+    )
     """Security algorithm preference configuration."""
 
     amf: str = Field(default="amf")
@@ -567,7 +598,8 @@ class GNBConfig(CommonGNBConfig):
     """Generic gNB configuration."""
 
     securityAlgorithmConfiguration: SecurityAlgorithmConfiguration = Field(
-        default_factory=SecurityAlgorithmConfiguration)
+        default_factory=SecurityAlgorithmConfiguration
+    )
     """Security algorithm preference configuration."""
 
     n2: NGAP = Field(default_factory=NGAP)
@@ -634,19 +666,16 @@ class GNBComponent(GenericRANComponent):
 
 # type used to tell pydantic which ran component to chose for validation based on the type
 type RANComponent = Annotated[
-    CUCPComponent |
-    CUUPComponent |
-    CUComponent |
-    DUComponent |
-    GNBComponent,
-    Field(discriminator="type")
+    CUCPComponent | CUUPComponent | CUComponent | DUComponent | GNBComponent, Field(discriminator="type")
 ]
 
 
 class RAN(Network5G):
     """5G Radio Access Network."""
 
-    components: dict[str, RANComponent] = Field(default_factory=lambda: {
-        "gnb": GNBComponent(type=RANComponentType.GNB),
-    })
+    components: dict[str, RANComponent] = Field(
+        default_factory=lambda: {
+            "gnb": GNBComponent(type=RANComponentType.GNB),
+        }
+    )
     """RAN components."""

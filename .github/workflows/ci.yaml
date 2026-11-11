@@ -111,6 +111,7 @@ jobs:
   readthedocs:
     needs: publish
     runs-on: ubuntu-latest
+    environment: readthedocs
     steps:
       - name: Trigger Read the Docs build for this tag
         run: |

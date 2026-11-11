@@ -82,7 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://test.pypi.org/p/${{ github.event.repository.name }}
+      url: https://pypi.org/p/${{ github.event.repository.name }}
     permissions:
       id-token: write
     steps:
@@ -92,7 +92,7 @@ jobs:
           path: dist/
       - uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          repository-url: https://test.pypi.org/legacy/
+          repository-url: https://pypi.org/legacy/
 
   release:
     needs: publish

@@ -1,8 +1,8 @@
 # 3GPP-based 5G/6G Metamodel
 
 <p align="center">
-  <a href="(https://pypi.python.org/pypi/metamodel_3gpp">
-    <img src="https://img.shields.io/pypi/v/metamodel_3gpp.svg" alt="Latest PyPi version" />
+  <a href="(https://pypi.python.org/pypi/metamodel-3gpp">
+    <img src="https://img.shields.io/pypi/v/metamodel-3gpp.svg" alt="Latest PyPi version" />
   </a>
   <a href="https://metamodel-3gpp.readthedocs.io/">
     <img src="https://img.shields.io/readthedocs/metamodel-3gpp?logo=read-the-docs" alt="Documentation Status" />

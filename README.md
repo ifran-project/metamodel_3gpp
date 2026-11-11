@@ -4,6 +4,9 @@
   <a href="(https://pypi.python.org/pypi/metamodel_3gpp">
     <img src="https://img.shields.io/pypi/v/metamodel_3gpp.svg" alt="Latest PyPi version" />
   </a>
+  <a href="https://metamodel-3gpp.readthedocs.io/">
+    <img src="https://img.shields.io/readthedocs/metamodel-3gpp?logo=read-the-docs" alt="Documentation Status" />
+  </a>
   <a href="https://github.com/ifran-project/metamodel_3gpp/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-BSD--3--Clause--Clear-blue.svg" alt="BSD 3-Clause Clear license" />
   </a>

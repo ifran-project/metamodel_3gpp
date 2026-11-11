@@ -107,14 +107,3 @@ jobs:
       - run: gh release create "$GITHUB_REF_NAME" dist/* --generate-notes --repo "$GITHUB_REPOSITORY"
         env:
           GH_TOKEN: ${{ github.token }}
-
-  readthedocs:
-    needs: publish
-    runs-on: ubuntu-latest
-    environment: readthedocs
-    steps:
-      - name: Trigger Read the Docs build for this tag
-        run: |
-          curl -fsS -X POST \
-            -H "Authorization: Token ${{ secrets.READTHEDOCS_TOKEN }}" \
-            "https://readthedocs.org/api/v3/projects/${{ vars.READTHEDOCS_PROJECT }}/versions/${GITHUB_REF_NAME}/builds/"

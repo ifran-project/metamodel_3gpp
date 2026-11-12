@@ -106,9 +106,9 @@ def generate_reference(app):
     if python_dir.exists():
         shutil.rmtree(python_dir)
 
-    # Build the Model Reference index directly
+    # Build the API Reference index directly
     packages_index = [
-        "Model Reference",
+        "API Reference",
         "===============",
         "",
         "Automatically generated documentation of Python models "

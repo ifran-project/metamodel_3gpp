@@ -1,7 +1,7 @@
 ```{include} ../README.md
 ```
 
-## Model Reference
+## API Reference
 
 Automatically generated documentation of Python models and supporting modules.
 

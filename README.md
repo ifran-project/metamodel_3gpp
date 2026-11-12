@@ -10,8 +10,8 @@
   <a href="https://github.com/ifran-project/metamodel_3gpp/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-BSD--3--Clause--Clear-blue.svg" alt="BSD 3-Clause Clear license" />
   </a>
-  <a href="https://www.codefactor.io/repository/github/ifran-project/metamodel_3gpp">
-    <img src="https://www.codefactor.io/repository/github/ifran-project/metamodel_3gpp/badge" alt="CodeFactor" />
+  <a href="https://sonarcloud.io/summary/new_code?id=ifran-project_metamodel_3gpp">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=ifran-project_metamodel_3gpp&metric=alert_status" alt="Quality gate status" />
   </a>
   <a href="https://github.com/ifran-project/metamodel_3gpp/releases">
     <img src="https://img.shields.io/github/v/release/ifran-project/metamodel_3gpp?color=orange" alt="Latest release" />

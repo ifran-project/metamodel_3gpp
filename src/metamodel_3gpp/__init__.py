@@ -1,6 +1,6 @@
 """3GPP-based 5G/6G metamodel."""
 
-from .models import (
+from metamodel_3gpp.models import (
     RAN,
     RIC,
     RU,

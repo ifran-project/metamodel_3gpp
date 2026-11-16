@@ -117,4 +117,4 @@ Contributions are welcome. To add or improve network concepts, extend the metamo
 
 ## License
 
-Distributed under the **BSD 3-Clause Clear** license. See [LICENSE](LICENSE) for details.
+See [LICENSE](https://github.com/ifran-project/metamodel_3gpp/blob/main/LICENSE) for the licensing terms of this project.
